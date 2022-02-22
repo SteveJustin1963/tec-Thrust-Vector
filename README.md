@@ -1,7 +1,7 @@
 # tec-Thrust-Vector
 tec-1 Thrust Vector Controlled Rocket
 
-1[]()
+![](https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/pics/1.png)
 
 
 ## Ref
