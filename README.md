@@ -1,2 +1,11 @@
 # tec-Thrust-Vector
 tec-1 Thrust Vector Controlled Rocket
+
+1[]()
+
+
+## Ref
+- https://create.arduino.cc/projecthub/search?q=thrust+vector
+- https://en.wikipedia.org/wiki/Thrust_vectoring
+- https://bps.space/products/thrust-vector-control
+
