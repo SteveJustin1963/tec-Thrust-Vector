@@ -30,7 +30,8 @@ combine this c code with ballistic algorithm
 - https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/tvbal.c
 
 combine this c code with trajectory control
-
+- https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/tvbal_t.c
+- 
 
 
 ## Ref
