@@ -6,6 +6,9 @@ In rocketry and ballistic missiles, thrust vectoring is the primary means of att
 ### Gimbaled thrust
 Thrust vectoring for many liquid rockets is achieved by gimbaling the whole engine. This involves moving the entire combustion chamber and outer engine bell.   A later method developed for solid propellant ballistic missiles achieves thrust vectoring by deflecting only the nozzle.
 
+
+![](https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/pics/1.png)
+
 ### Propellant injection
 It involves injecting fluid into the exhaust flow from injectors mounted around the aft end of the missile. If the liquid is injected on only one side of the missile, it modifies that side of the exhaust plume, resulting in different thrust on that side resulting in asymmetric net forces
 
@@ -18,8 +21,98 @@ allow thrust to be deflected without moving any parts of the engine. They have t
 ### mechanical vanes
 smaller atmospheric missiles dont use flight control surfaces and instead use mechanical vanes to deflect rocket motor exhaust. Thrust vectoring can reduce a missile's minimum range. 
 
+### project
 
-![](https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/pics/1.png)
+write c code to control Thrust vectoring algorithm using 2 axis gimbaling
+ 
+
+void thrust_vector(double *thrust, double *pitch, double *yaw)
+{
+    double sin_pitch = sin(*pitch);
+    double cos_pitch = cos(*pitch);
+    double sin_yaw = sin(*yaw);
+    double cos_yaw = cos(*yaw);
+
+    thrust[0] = cos_pitch * cos_yaw;
+    thrust[1] = cos_pitch * sin_yaw;
+    thrust[2] = sin_pitch;
+}
+
+combine this c code with ballistic algorithm
+
+
+void ballistic(double *position, double *velocity, double *acceleration, double *thrust, double *mass, double *drag)
+{
+    double F_drag[3];
+    double F_thrust[3];
+
+    // Calculate drag force
+    F_drag[0] = -0.5 * (*drag) * (*velocity) * (*velocity);
+    F_drag[1] = -0.5 * (*drag) * (*velocity) * (*velocity);
+    F_drag[2] = -0.5 * (*drag) * (*velocity) * (*velocity);
+
+    // Calculate thrust force
+    F_thrust[0] = *thrust * (*mass);
+    F_thrust[1] = *thrust * (*mass);
+    F_thrust[2] = *thrust * (*mass);
+
+    // Calculate net force
+    acceleration[0] = (F_thrust[0] + F_drag[0]) / (*mass);
+    acceleration[1] = (F_thrust[1] + F_drag[1]) / (*mass);
+    acceleration[2] = (F_thrust[2] + F_drag[2]) / (*mass);
+
+    // Update velocity
+    velocity[0] += acceleration[0] * dt;
+    velocity[1] += acceleration[1] * dt;
+    velocity[2] += acceleration[2] * dt;
+
+    // Update position
+    position[0] += velocity[0] * dt;
+    position[1] += velocity[1] * dt;
+    position[2] += velocity[2] * dt;
+}
+
+combine this c code with trajectory control
+
+
+
+
+void trajectory_control(double *position, double *velocity, double *acceleration, double *thrust, double *mass, double *drag, double *desired_position, double *desired_velocity, double *desired_acceleration)
+{
+    double F_drag[3];
+    double F_thrust[3];
+    double F_desired[3];
+
+    // Calculate drag force
+    F_drag[0] = -0.5 * (*drag) * (*velocity) * (*velocity);
+    F_drag[1] = -0.5 * (*drag) * (*velocity) * (*velocity);
+    F_drag[2] = -0.5 * (*drag) * (*velocity) * (*velocity);
+
+    // Calculate thrust force
+    F_thrust[0] = *thrust * (*mass);
+    F_thrust[1] = *thrust * (*mass);
+    F_thrust[2] = *thrust * (*mass);
+
+    // Calculate desired force
+    F_desired[0] = (*desired_position - position[0]) * kp + (*desired_velocity - velocity[0]) * kv + (*desired_acceleration - acceleration[0]) * ka;
+    F_desired[1] = (*desired_position - position[1]) * kp + (*desired_velocity - velocity[1]) * kv + (*desired_acceleration - acceleration[1]) * ka;
+    F_desired[2] = (*desired_position - position[2]) * kp + (*desired_velocity - velocity[2]) * kv + (*desired_acceleration - acceleration[2]) * ka;
+
+    // Calculate net force
+    acceleration[0] = (F_thrust[0] + F_drag[0] + F_desired[0]) / (*mass);
+    acceleration[1] = (F_thrust[1] + F_drag[1] + F_desired[1]) / (*mass);
+    acceleration[2] = (F_thrust[2] + F_drag[2] + F_desired[2]) / (*mass);
+
+    // Update velocity
+    velocity[0] += acceleration[0] * dt;
+    velocity[1] += acceleration[1] * dt;
+    velocity[2] += acceleration[2] * dt;
+
+    // Update position
+    position[0] += velocity[0] * dt;
+    position[1] += velocity[1] * dt;
+    position[2] += velocity[2] * dt;
+}
 
 
 ## Ref
