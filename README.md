@@ -23,15 +23,14 @@ smaller atmospheric missiles dont use flight control surfaces and instead use me
 
 ### project
 
-write c code to control Thrust vectoring algorithm using 2 axis gimbaling
-- https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/tv1.c
+write c code to control Thrust vectoring algorithm using 2 axis gimbaling, tv1.c
 
-combine this c code with ballistic algorithm
-- https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/tvbal.c
+combine this c code with ballistic algorithm, tvbal.c
 
-combine this c code with trajectory control
-- https://github.com/SteveJustin1963/tec-Thrust-Vector/blob/main/tvbal_t.c
-- 
+combine this c code with trajectory control, tvbal_t.c
+
+## Iterate
+-  nose cone stabilization system 
 
 
 ## Ref
