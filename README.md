@@ -30,12 +30,12 @@ combine this c code with ballistic algorithm, tvbal.c
 combine this c code with trajectory control, tvbal_t.c
 
 ## Iterate
--  nose cone stabilization system 
+-  nose cone stabilization system (4)
 
 
 ## Ref
-- https://create.arduino.cc/projecthub/search?q=thrust+vector
-- https://en.wikipedia.org/wiki/Thrust_vectoring
-- https://bps.space/products/thrust-vector-control
-- 
+- https://create.arduino.cc/projecthub/search?q=thrust+vector (1)
+- https://en.wikipedia.org/wiki/Thrust_vectoring (2)
+- https://bps.space/products/thrust-vector-control (3)
+- https://workshopscience.com/arduino-rocket-stabilization/ (4)
 
