@@ -38,4 +38,5 @@ combine this c code with trajectory control, tvbal_t.c
 - https://en.wikipedia.org/wiki/Thrust_vectoring (2)
 - https://bps.space/products/thrust-vector-control (3)
 - https://workshopscience.com/arduino-rocket-stabilization/ (4)
+- https://create.arduino.cc/projecthub/MissionCritical/mpu-6050-tutorial-how-to-program-mpu-6050-with-arduino-aee39a
 
